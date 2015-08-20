@@ -1,2 +1,2 @@
 # CommandParser
-command line app with parsing args
+command line app with parsing args.

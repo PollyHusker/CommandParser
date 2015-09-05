@@ -10,12 +10,11 @@ namespace CommandParser
         static List<string> Tags = new List<string>() { "help", "k", "ping", "print" };
         static void Main(string[] args)
         {
-
             //test
-            TestFunc();
+            /*TestFunc();
             Console.ReadLine();
             return;
-            
+            */
 
             Console.WriteLine("I wish to be a part of study group");
             if (args != null)
@@ -37,9 +36,7 @@ namespace CommandParser
                 {
                     Console.WriteLine(ex.Message);
                 }
-
             }
-            
         }
 
         public static string[] ToCmdParams(string line)

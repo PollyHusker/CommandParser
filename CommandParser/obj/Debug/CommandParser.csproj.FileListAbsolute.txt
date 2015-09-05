@@ -1,0 +1,6 @@
+D:\FUN\CommandParser\CommandParser\bin\Debug\CommandParser.exe.config
+D:\FUN\CommandParser\CommandParser\bin\Debug\CommandParser.exe
+D:\FUN\CommandParser\CommandParser\bin\Debug\CommandParser.pdb
+D:\FUN\CommandParser\CommandParser\obj\Debug\CommandParser.csprojResolveAssemblyReference.cache
+D:\FUN\CommandParser\CommandParser\obj\Debug\CommandParser.exe
+D:\FUN\CommandParser\CommandParser\obj\Debug\CommandParser.pdb

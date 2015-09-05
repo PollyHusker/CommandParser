@@ -15,8 +15,8 @@ namespace CommandParser
             Console.ReadLine();
             return;
             */
+            //Console.WriteLine("I wish to be a part of study group");
 
-            Console.WriteLine("I wish to be a part of study group");
             if (args != null)
             {
                 if (!HasWrongTags(args))

@@ -25,10 +25,9 @@ namespace CommandParser
             while (true)
             {
                 var line = Console.ReadLine();
-                string[] cmd = null;
                 try
                 {
-                    cmd = ToCmdParams(line);
+                    var cmd = ToCmdParams(line);
                     if (!HasWrongTags(cmd))
                         ProcessCmd(cmd);
                 }
@@ -45,7 +44,7 @@ namespace CommandParser
             List<string> list = new List<string>();
             line = line.Trim();
             var li = 0; // line index
-            while(li < line.Length)
+            while (li < line.Length)
             {
                 try {
                     while (line[li] == ' ')
@@ -55,7 +54,7 @@ namespace CommandParser
                         var le = line.IndexOf('\"', li + 1);
                         if (le == -1)
                             throw new Exception();
-                        list.Add(line.Substring(li, le - li+1)); 
+                        list.Add(line.Substring(li, le - li + 1));
                         li = le + 1;
                     }
                     else
@@ -67,7 +66,7 @@ namespace CommandParser
                         li = le + 1;
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 { throw new ArgumentException("Unexpected arguments. Use /? to see set of allowed commands and arguments"); }
             }
             return list.ToArray();
@@ -89,7 +88,7 @@ namespace CommandParser
             return false;
         }
 
- 
+
         public static void ProcessCmd(string[] cmdParams)
         {
             bool cmndPresent = false;
@@ -98,7 +97,7 @@ namespace CommandParser
                 CmndPrintHelp();
                 return;
             }
-            
+
             var i = 0;
             try
             {
@@ -179,15 +178,11 @@ namespace CommandParser
         {
             if (list.Count == 0)
                 throw new ArgumentException("Error: Incorrect input arguments for command -k");
-            if (list.Count % 2 == 0)
-                for (int i = 0; i < list.Count / 2; i++)
-                    Console.WriteLine(String.Format("{0} - {1}", list[2 * i].Trim('"'), list[2 * i + 1].Trim('"')));
-            else
-            {
-                for (int i = 0; i < list.Count / 2; i++)
-                    Console.WriteLine(String.Format("{0} - {1}", list[2 * i].Trim('"'), list[2 * i + 1].Trim('"')));
+
+            for (int i = 0; i < list.Count / 2; i++)
+                Console.WriteLine(String.Format("{0} - {1}", list[2 * i].Trim('"'), list[2 * i + 1].Trim('"')));
+            if (list.Count % 2 != 0)
                 Console.WriteLine(String.Format("{0} - null", list[list.Count() - 1].Trim('"')));
-            }
         }
 
         static void TestFunc()

@@ -7,7 +7,8 @@ namespace CommandParser
 {
     public class CommandParser
     {
-        static List<string> Tags = new List<string>() { "help", "k", "ping", "print" };
+        static List<string> Tags = new List<string>() { "help", "k", "ping", "print", "saveusername", "getusername"};
+        public static string UserName = null;
         static void Main(string[] args)
         {
             //test
@@ -16,7 +17,7 @@ namespace CommandParser
             return;
             */
             //Console.WriteLine("I wish to be a part of study group");
-
+            
             if (args != null)
             {
                 if (!HasWrongTags(args))
@@ -124,6 +125,16 @@ namespace CommandParser
                                 CmndK(kParams);
                                 i = i + kParams.Count();
                                 break;
+                            case "saveusername":
+                                i++;
+                                List<string> nameParam = GetCmndArgs(cmdParams, i);
+                                CmndSaveUserName(nameParam);
+                                i++;
+                                break;
+                            case "getusername":
+                                i++;
+                                CmndGetUserName();
+                                break;
                         }
                     }
                     else throw new ArgumentException("Unexpected arguments. Use /? to see set of allowed commands and arguments");
@@ -150,10 +161,12 @@ namespace CommandParser
 
         static void CmndPrintHelp()
         {
-            Console.WriteLine("Commands to use [-k key value] [-ping] [-print message] [-help]");
+            Console.WriteLine("Commands to use [-k key value] [-ping] [-print message] [-saveusername name] [-getusername] [-help]");
             Console.WriteLine("-k key value - to print a table, each row contains key - value");
             Console.WriteLine("-ping - to beep and print \"Pinging...\"");
             Console.WriteLine("-print message - to print message");
+            Console.WriteLine("-saveusername name - to save username");
+            Console.WriteLine("-getusername - to print previously saved username");
             Console.WriteLine("-help /h /? - to print this help message");
         }
         static void CmndPing()
@@ -184,7 +197,19 @@ namespace CommandParser
             if (list.Count % 2 != 0)
                 Console.WriteLine(String.Format("{0} - null", list[list.Count() - 1].Trim('"')));
         }
-
+        static void CmndSaveUserName(List<string> nameParam)
+        {
+            if (nameParam.Count != 1)
+                throw new ArgumentException("Error: Incorrect input arguments for command -saveusername");
+            UserName = nameParam[0];
+        }
+        static void CmndGetUserName()
+        {
+            if (string.IsNullOrEmpty(UserName))
+                Console.WriteLine("Username is absent. Be sure that You saved it with -saveusername command");
+            else
+                Console.WriteLine(UserName);
+        }
         static void TestFunc()
         {
             //Test.StringToCmnParamArrayTest();

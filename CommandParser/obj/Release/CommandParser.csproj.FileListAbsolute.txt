@@ -3,3 +3,4 @@ D:\FUN\CommandParser\CommandParser\bin\Release\CommandParser.exe
 D:\FUN\CommandParser\CommandParser\bin\Release\CommandParser.pdb
 D:\FUN\CommandParser\CommandParser\obj\Release\CommandParser.exe
 D:\FUN\CommandParser\CommandParser\obj\Release\CommandParser.pdb
+D:\FUN\CommandParser\CommandParser\obj\Release\CommandParser.csprojResolveAssemblyReference.cache

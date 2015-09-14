@@ -129,7 +129,7 @@ namespace CommandParser
                                 i++;
                                 List<string> nameParam = GetCmndArgs(cmdParams, i);
                                 CmndSaveUserName(nameParam);
-                                i++;
+                                i += nameParam.Count();
                                 break;
                             case "getusername":
                                 i++;
@@ -199,16 +199,16 @@ namespace CommandParser
         }
         static void CmndSaveUserName(List<string> nameParam)
         {
-            if (nameParam.Count != 1)
+            if (nameParam.Count == 0)
                 throw new ArgumentException("Error: Incorrect input arguments for command -saveusername");
-            UserName = nameParam[0];
+            UserName = string.Join(" ", nameParam);
         }
         static void CmndGetUserName()
         {
             if (string.IsNullOrEmpty(UserName))
                 Console.WriteLine("Username is absent. Be sure that You saved it with -saveusername command");
             else
-                Console.WriteLine(UserName);
+                Console.WriteLine(UserName.Trim('"'));
         }
         static void TestFunc()
         {
